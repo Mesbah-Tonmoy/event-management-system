@@ -103,7 +103,7 @@ include 'includes/header.php';
 
 <div class="pb-1 mb-3 border-bottom d-flex justify-content-between align-items-center">
     <h2>Events</h2>
-    <a href="create_event.php" class="btn btn-primary">Create New Event</a>
+    <a href="/pages/events/create.php" class="btn btn-primary">Create New Event</a>
 </div>
 
 <!-- Filter Form -->

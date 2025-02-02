@@ -38,10 +38,10 @@ if (is_logged_in()) {
     $stmt = $pdo->prepare("
         SELECT EXISTS(
             SELECT 1 FROM attendees 
-            WHERE event_id = ? AND user_id = ?
+            WHERE event_id = ?
         ) AS is_registered
     ");
-    $stmt->execute([$event_id, $_SESSION['user_id']]);
+    $stmt->execute([$event_id]);
     $is_registered = (bool)$stmt->fetchColumn();
 }
 
