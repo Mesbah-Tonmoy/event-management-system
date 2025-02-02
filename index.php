@@ -77,13 +77,13 @@
     </div>
     <?php endif; ?>
 
-    <section class="other-events py-5">
+    <section class="other-events pt-5 pb-2 pb-lg-5">
         <div class="container">
             <h2 class="text-center mb-4">Upcoming Events</h2>
             <div class="row">
                 <?php if (!empty($upcoming_events)): ?>
                     <?php foreach ($upcoming_events as $event): ?>
-                    <div class="col-md-4 mb-4">
+                    <div class="col-md-6 col-lg-4 mb-4">
                         <div class="event-card">
                             <a href="pages/events/view.php?id=<?= $event['id'] ?>">
                                 <img src="uploads/<?= htmlspecialchars($event['img']) ?>" alt="<?= htmlspecialchars($event['title']) ?>" class="event-image">

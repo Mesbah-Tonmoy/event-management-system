@@ -16,7 +16,7 @@ function redirect_if_logged_in() {
 
 function redirect_if_not_logged_in() {
     if (!is_logged_in()) {
-        header('Location: /evs-home/login.php');
+        header('Location: /evs/login.php');
         exit;
     }
 }

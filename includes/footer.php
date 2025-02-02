@@ -4,7 +4,7 @@
     <div class="spinner"></div>
 </div>
 
-<footer class="bg-dark text-white py-2 mt-5">
+<footer class="bg-dark text-white py-2">
     <div class="container my-1">
         <div class="row">
             <div class="col-md-6 text-center text-sm-start">
