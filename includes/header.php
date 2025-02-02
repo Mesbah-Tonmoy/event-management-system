@@ -90,6 +90,6 @@ $current_page = basename($_SERVER['PHP_SELF']);
     </nav>
 
     <?php if ($current_page !== 'index.php'): ?>
-        <div class="container mt-4">
+        <div class="container my-5">
         <?php display_flash_messages(); ?>
     <?php endif; ?>

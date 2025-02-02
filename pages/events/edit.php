@@ -81,71 +81,69 @@ $pageTitle = "Edit Event - " . htmlspecialchars($event['title']);
 include '../../includes/header.php';
 ?>
 
-<div class="container mt-5">
-    <div class="row">
-        <div class="col-md-6 mx-auto">
-            <h2>Edit Event</h2>
+<div class="row">
+    <div class="col-md-6 mx-auto">
+        <h2>Edit Event</h2>
+        
+        <?php display_flash_messages(); ?>
+        
+        <form method="POST" enctype="multipart/form-data">
+            <div class="mb-3">
+                <label for="image" class="form-label">Current Image</label>
+                <?php if ($event['img']): ?>
+                    <img src="../../uploads/<?= htmlspecialchars($event['img']) ?>" 
+                            class="img-thumbnail d-block mb-2" 
+                            style="max-width: 200px">
+                <?php endif; ?>
+                <input type="file" class="form-control" id="image" name="fileToUpload">
+            </div>
             
-            <?php display_flash_messages(); ?>
+            <!-- Include form fields from create.php with existing values -->
+            <div class="mb-3">
+                <label for="title" class="form-label">Title</label>
+                <input type="text" class="form-control" id="title" name="title" 
+                        value="<?= htmlspecialchars($event['title']) ?>" required>
+            </div>
             
-            <form method="POST" enctype="multipart/form-data">
-                <div class="mb-3">
-                    <label for="image" class="form-label">Current Image</label>
-                    <?php if ($event['img']): ?>
-                        <img src="../../uploads/<?= htmlspecialchars($event['img']) ?>" 
-                             class="img-thumbnail d-block mb-2" 
-                             style="max-width: 200px">
-                    <?php endif; ?>
-                    <input type="file" class="form-control" id="image" name="fileToUpload">
-                </div>
-                
-                <!-- Include form fields from create.php with existing values -->
-                <div class="mb-3">
-                    <label for="title" class="form-label">Title</label>
-                    <input type="text" class="form-control" id="title" name="title" 
-                           value="<?= htmlspecialchars($event['title']) ?>" required>
-                </div>
-                
-                <div class="mb-3">
-                    <label for="description" class="form-label">Description</label>
-                    <textarea class="form-control" id="description" name="description" rows="3"><?= htmlspecialchars($event['description']) ?></textarea>
-                </div>
-                
-                <div class="mb-3">
-                    <label for="category" class="form-label">Category</label>
-                    <select class="form-select" id="category" name="category" required>
-                        <?php foreach ($categories as $cat): ?>
-                            <option value="<?= $cat['id'] ?>" 
-                                <?= $cat['id'] == $event['category'] ? 'selected' : '' ?>>
-                                <?= htmlspecialchars($cat['name']) ?>
-                            </option>
-                        <?php endforeach; ?>
-                    </select>
-                </div>
+            <div class="mb-3">
+                <label for="description" class="form-label">Description</label>
+                <textarea class="form-control" id="description" name="description" rows="3"><?= htmlspecialchars($event['description']) ?></textarea>
+            </div>
+            
+            <div class="mb-3">
+                <label for="category" class="form-label">Category</label>
+                <select class="form-select" id="category" name="category" required>
+                    <?php foreach ($categories as $cat): ?>
+                        <option value="<?= $cat['id'] ?>" 
+                            <?= $cat['id'] == $event['category'] ? 'selected' : '' ?>>
+                            <?= htmlspecialchars($cat['name']) ?>
+                        </option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
 
-                <div class="mb-3">
-                    <label for="date" class="form-label">Date</label>
-                    <input type="date" class="form-control" id="date" name="date" value="<?= htmlspecialchars($event['date']) ?>" required>
-                </div>
-                <div class="mb-3">
-                    <label for="time" class="form-label">Time</label>
-                    <input type="time" class="form-control" id="time" name="time" value="<?= htmlspecialchars($event['time']) ?>" required>
-                </div>
-                <div class="mb-3">
-                    <label for="location" class="form-label">Location</label>
-                    <input type="text" class="form-control" id="location" name="location" value="<?= htmlspecialchars($event['location']) ?>" required>
-                </div>
-                <div class="mb-3">
-                    <label for="capacity" class="form-label">Capacity</label>
-                    <input type="number" class="form-control" id="capacity" name="capacity" value="<?= htmlspecialchars($event['capacity']) ?>" required min="1">
-                </div>
-                
-                <!-- Include other form fields with existing values -->
-                
-                <button type="submit" class="btn btn-primary">Update Event</button>
-                <a href="view.php?id=<?= $event_id ?>" class="btn btn-secondary">Cancel</a>
-            </form>
-        </div>
+            <div class="mb-3">
+                <label for="date" class="form-label">Date</label>
+                <input type="date" class="form-control" id="date" name="date" value="<?= htmlspecialchars($event['date']) ?>" required>
+            </div>
+            <div class="mb-3">
+                <label for="time" class="form-label">Time</label>
+                <input type="time" class="form-control" id="time" name="time" value="<?= htmlspecialchars($event['time']) ?>" required>
+            </div>
+            <div class="mb-3">
+                <label for="location" class="form-label">Location</label>
+                <input type="text" class="form-control" id="location" name="location" value="<?= htmlspecialchars($event['location']) ?>" required>
+            </div>
+            <div class="mb-3">
+                <label for="capacity" class="form-label">Capacity</label>
+                <input type="number" class="form-control" id="capacity" name="capacity" value="<?= htmlspecialchars($event['capacity']) ?>" required min="1">
+            </div>
+            
+            <!-- Include other form fields with existing values -->
+            
+            <button type="submit" class="btn btn-primary">Update Event</button>
+            <a href="view.php?id=<?= $event_id ?>" class="btn btn-secondary">Cancel</a>
+        </form>
     </div>
 </div>
 

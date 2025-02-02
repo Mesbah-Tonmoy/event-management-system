@@ -50,47 +50,45 @@ $pageTitle = "Register - Event Management System";
 include 'includes/header.php'; 
 ?>
 
-<div class="container mt-5">
-    <div class="row justify-content-center">
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-header">Register</div>
-                <div class="card-body">
-                    <?php if (!empty($errors)): ?>
-                        <div class="alert alert-danger">
-                            <?php foreach ($errors as $error): ?>
-                                <div><?= htmlspecialchars($error) ?></div>
-                            <?php endforeach; ?>
-                        </div>
-                    <?php endif; ?>
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">Register</div>
+            <div class="card-body">
+                <?php if (!empty($errors)): ?>
+                    <div class="alert alert-danger">
+                        <?php foreach ($errors as $error): ?>
+                            <div><?= htmlspecialchars($error) ?></div>
+                        <?php endforeach; ?>
+                    </div>
+                <?php endif; ?>
 
-                    <form method="POST" onsubmit="return validateRegisterForm()">
-                        <input type="hidden" name="csrf_token" value="<?= generate_csrf_token() ?>">
+                <form method="POST" onsubmit="return validateRegisterForm()">
+                    <input type="hidden" name="csrf_token" value="<?= generate_csrf_token() ?>">
 
-                        <div class="mb-3">
-                            <label for="name" class="form-label">Name</label>
-                            <input type="text" class="form-control" id="name" name="name" required>
-                        </div>
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="name" name="name" required>
+                    </div>
 
-                        <div class="mb-3">
-                            <label for="email" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="email" name="email" required>
-                        </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" name="email" required>
+                    </div>
 
-                        <div class="mb-3">
-                            <label for="password" class="form-label">Password</label>
-                            <input type="password" class="form-control" id="password" name="password" required>
-                        </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="password" name="password" required>
+                    </div>
 
-                        <div class="mb-3">
-                            <label for="confirm_password" class="form-label">Confirm Password</label>
-                            <input type="password" class="form-control" id="confirm_password" name="confirm_password" required>
-                        </div>
+                    <div class="mb-3">
+                        <label for="confirm_password" class="form-label">Confirm Password</label>
+                        <input type="password" class="form-control" id="confirm_password" name="confirm_password" required>
+                    </div>
 
-                        <button type="submit" class="btn btn-primary">Register</button>
-                        <a href="login.php" class="btn btn-link">Login instead</a>
-                    </form>
-                </div>
+                    <button type="submit" class="btn btn-primary">Register</button>
+                    <a href="login.php" class="btn btn-link">Login instead</a>
+                </form>
             </div>
         </div>
     </div>

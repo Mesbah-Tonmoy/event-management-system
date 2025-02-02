@@ -64,51 +64,49 @@ $pageTitle = "Attendees List - ";
 include 'includes/header.php';
 ?>
 
-<div class="container mt-4">
-    <div class="d-md-flex justify-content-between align-items-center mb-4">
-        <h2 class="mb-md-0">
-            <?= htmlspecialchars($title) ?> 
-            <small class="text-muted">(<?= $attendee_count ?> registrations)</small>
-        </h2>
-        <a href="attendees.php<?= $event_id ? '?event_id=' . $event_id .'&': '?' ?>export=1" class="btn btn-success<?= empty($attendees) ? ' disabled' : '' ?>">
-            <i class="bi bi-download"></i> Export CSV
-        </a>
-    </div>
-
-    <?php if (empty($attendees)): ?>
-        <div class="alert alert-info">No attendees registered yet</div>
-    <?php else: ?>
-        <div class="table-responsive">
-            <table class="table table-hover border">
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Phone</th>
-                        <th>Age</th>
-                        <th>Gender</th>
-                        <th>Registration Date</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php foreach ($attendees as $attendee): ?>
-                    <tr>
-                        <td><?= htmlspecialchars($attendee['name']) ?></td>
-                        <td><?= htmlspecialchars($attendee['email']) ?></td>
-                        <td><?= htmlspecialchars($attendee['phone']) ?? '' ?></td>
-                        <td><?= htmlspecialchars($attendee['age']) ?></td>
-                        <td><?= htmlspecialchars($attendee['gender']) ?></td>
-                        <td><?= date('M j, Y - h:i A', strtotime($attendee['registered_at'])) ?></td>
-                    </tr>
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
-        </div>
-    <?php endif; ?>
-    
-    <a href="dashboard.php" class="btn btn-secondary mt-3">
-        <i class="bi bi-arrow-left"></i> Back to Dashboard
+<div class="d-md-flex justify-content-between align-items-center mb-4">
+    <h2 class="mb-md-0">
+        <?= htmlspecialchars($title) ?> 
+        <small class="text-muted">(<?= $attendee_count ?> registrations)</small>
+    </h2>
+    <a href="attendees.php<?= $event_id ? '?event_id=' . $event_id .'&': '?' ?>export=1" class="btn btn-success<?= empty($attendees) ? ' disabled' : '' ?>">
+        <i class="bi bi-download"></i> Export CSV
     </a>
 </div>
+
+<?php if (empty($attendees)): ?>
+    <div class="alert alert-info">No attendees registered yet</div>
+<?php else: ?>
+    <div class="table-responsive">
+        <table class="table table-hover border">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Age</th>
+                    <th>Gender</th>
+                    <th>Registration Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($attendees as $attendee): ?>
+                <tr>
+                    <td><?= htmlspecialchars($attendee['name']) ?></td>
+                    <td><?= htmlspecialchars($attendee['email']) ?></td>
+                    <td><?= htmlspecialchars($attendee['phone']) ?? '' ?></td>
+                    <td><?= htmlspecialchars($attendee['age']) ?></td>
+                    <td><?= htmlspecialchars($attendee['gender']) ?></td>
+                    <td><?= date('M j, Y - h:i A', strtotime($attendee['registered_at'])) ?></td>
+                </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
+<?php endif; ?>
+
+<a href="dashboard.php" class="btn btn-secondary mt-3">
+    <i class="bi bi-arrow-left"></i> Back to Dashboard
+</a>
 
 <?php include 'includes/footer.php'; ?>

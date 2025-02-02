@@ -52,19 +52,17 @@ $pageTitle = "Delete Event";
 include '../../includes/header.php';
 ?>
 
-<div class="container mt-5">
-    <div class="row">
-        <div class="col-md-6 mx-auto">
-            <div class="card">
-                <div class="card-body">
-                    <h2 class="card-title">Delete Event</h2>
-                    <p>Are you sure you want to delete this event? This action cannot be undone.</p>
-                    
-                    <form method="POST">
-                        <button type="submit" class="btn btn-danger">Confirm Delete</button>
-                        <a href="view.php?id=<?= $event_id ?>" class="btn btn-secondary">Cancel</a>
-                    </form>
-                </div>
+<div class="row">
+    <div class="col-md-6 mx-auto">
+        <div class="card">
+            <div class="card-body">
+                <h2 class="card-title">Delete Event</h2>
+                <p>Are you sure you want to delete this event? This action cannot be undone.</p>
+                
+                <form method="POST">
+                    <button type="submit" class="btn btn-danger">Confirm Delete</button>
+                    <a href="view.php?id=<?= $event_id ?>" class="btn btn-secondary">Cancel</a>
+                </form>
             </div>
         </div>
     </div>
