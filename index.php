@@ -19,7 +19,8 @@
     $closest_event = $stmt_closest->fetch(PDO::FETCH_ASSOC);
     
     // For upcoming events query
-    $stmt_upcoming = $pdo->query("
+    $events_per_page = 6;
+    $stmt_upcoming = $pdo->prepare("
         SELECT e.*,
         (SELECT COUNT(*) FROM attendees WHERE event_id = e.id) AS registered_count,
         u.name as organizer, 
@@ -30,8 +31,20 @@
         WHERE e.date >= CURDATE()
         ". ($closest_event ? " AND e.id != ".$closest_event['id'] : "")."
         ORDER BY e.date ASC
+        LIMIT :limit
     ");
+    $stmt_upcoming->bindValue(':limit', $events_per_page, PDO::PARAM_INT);
+    $stmt_upcoming->execute();
     $upcoming_events = $stmt_upcoming->fetchAll(PDO::FETCH_ASSOC);
+
+    // Get total count for pagination
+    $stmt_count = $pdo->query("
+        SELECT COUNT(*) as total
+        FROM events e
+        WHERE e.date >= CURDATE()
+        ". ($closest_event ? " AND e.id != ".$closest_event['id'] : "")
+    );
+    $total_events = $stmt_count->fetch(PDO::FETCH_ASSOC)['total'];
     
     $pageTitle = "Event Management System";
     require_once 'includes/header.php';
@@ -40,7 +53,9 @@
     <section class="hero-event py-sm-5" style="background-image: url('uploads/<?= htmlspecialchars($closest_event['img']) ?>');">
         <div class="container text-center bg-glass">
             <h2 id="hero-title" class="mb-4">
-                <span class="d-none d-sm-inline">Next Event: </span><?= htmlspecialchars($closest_event['title']) ?>
+                <a href="pages/events/view.php?id=<?= $closest_event['id'] ?>" class="text-decoration-none text-white">
+                    <span class="d-none d-sm-inline">Next Event: </span><?= htmlspecialchars($closest_event['title']) ?>
+                </a>
             </h2>
             <div id="countdown" class="countdown mb-4" data-date="<?= $closest_event['date'] ?> <?= $closest_event['time'] ?>">
                 <div class="countdown-section">
@@ -119,6 +134,13 @@
                     </div>
                 <?php endif; ?>
             </div>
+            <?php if ($total_events > count($upcoming_events)): ?>
+                <div class="text-center mt-4">
+                    <button id="loadMoreBtn" class="btn btn-primary" data-event-id="<?= $closest_event['id'] ?>" data-page="1" data-total="<?= $total_events ?>">
+                        Load More
+                    </button>
+                </div>
+            <?php endif; ?>
         </div>
     </section>
 

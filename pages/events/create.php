@@ -64,11 +64,11 @@ require_once '../../includes/header.php';
         <h2>Create New Event</h2>
         <form method="POST" action="create.php" enctype="multipart/form-data">
             <div class="mb-3">
-                <label for="image" class="form-label">Image</label>
+                <label for="image" class="form-label">Image <span class="text-danger">*</span></label>
                 <input type="file" class="form-control" id="image" name="fileToUpload" accept="image/*" required>
             </div>
             <div class="mb-3">
-                <label for="title" class="form-label">Title</label>
+                <label for="title" class="form-label">Title <span class="text-danger">*</span></label>
                 <input type="text" class="form-control" id="title" name="title" required>
             </div>
             <div class="mb-3">
@@ -81,7 +81,7 @@ require_once '../../includes/header.php';
             $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
             ?>
             <div class="mb-3">
-                <label for="category" class="form-label">Category</label>
+                <label for="category" class="form-label">Category <span class="text-danger">*</span></label>
                 <select class="form-select" id="category" name="category" required>
                     <option value="" disabled selected>Select a category</option>
                     <?php foreach ($categories as $category): ?>
@@ -90,19 +90,19 @@ require_once '../../includes/header.php';
                 </select>
             </div>
             <div class="mb-3">
-                <label for="date" class="form-label">Date</label>
+                <label for="date" class="form-label">Date <span class="text-danger">*</span></label>
                 <input type="date" class="form-control" id="date" name="date" required>
             </div>
             <div class="mb-3">
-                <label for="time" class="form-label">Time</label>
+                <label for="time" class="form-label">Time <span class="text-danger">*</span></label>
                 <input type="time" class="form-control" id="time" name="time" required>
             </div>
             <div class="mb-3">
-                <label for="location" class="form-label">Location</label>
+                <label for="location" class="form-label">Location <span class="text-danger">*</span></label>
                 <input type="text" class="form-control" id="location" name="location" required>
             </div>
             <div class="mb-3">
-                <label for="capacity" class="form-label">Capacity</label>
+                <label for="capacity" class="form-label">Capacity <span class="text-danger">*</span></label>
                 <input type="number" class="form-control" id="capacity" name="capacity" required min="1">
             </div>
             <button type="submit" class="btn btn-primary">Create Event</button>

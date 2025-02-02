@@ -134,6 +134,79 @@ document.addEventListener('DOMContentLoaded', function() {
             alert.close();
         }, 2000);
     });
+
+    // Load More functionality
+    const loadMoreBtn = document.getElementById('loadMoreBtn');
+    if (loadMoreBtn) {
+        loadMoreBtn.addEventListener('click', async function() {
+            const currentPage = parseInt(this.dataset.page);
+            const totalEvents = parseInt(this.dataset.total);
+            const eventsContainer = document.querySelector('.other-events .row');
+            const closestEventId = document.querySelector('#loadMoreBtn')?.dataset.eventId;
+
+            try {
+                const response = await fetch('/evs/includes/load-more.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: `page=${currentPage}&closest_event_id=${closestEventId || 0}`
+                });
+
+                const data = await response.json();
+                
+                if (data.html) {
+                    // Append new events
+                    eventsContainer.insertAdjacentHTML('beforeend', data.html);
+
+                    // Update button state
+                    const loadedEvents = document.querySelectorAll('.event-card').length;
+                    if (loadedEvents >= totalEvents) {
+                        loadMoreBtn.style.display = 'none';
+                    } else {
+                        loadMoreBtn.dataset.page = currentPage + 1;
+                    }
+
+                    // Initialize new register buttons
+                    initializeRegisterButtons();
+                }
+            } catch (error) {
+                console.error('Error loading more events:', error);
+                showNotification('Error loading more events. Please try again.', 'danger');
+            }
+        });
+    }
+
+    // Helper function to initialize register buttons
+    function initializeRegisterButtons() {
+        document.querySelectorAll('.register-btn:not([data-initialized])').forEach(button => {
+            button.dataset.initialized = 'true';
+            button.addEventListener('click', handleRegisterClick);
+        });
+    }
+
+    // Extract register button click handler
+    function handleRegisterClick(e) {
+        e.preventDefault();
+        if (this.classList.contains('disabled') || this.classList.contains('btn-success')) {
+            return;
+        }
+        
+        const eventCard = this.closest('.event-card') || this.closest('.hero-event');
+        const capacityBadge = eventCard?.querySelector('.badge');
+        
+        if (capacityBadge) {
+            const [current, capacity] = capacityBadge.textContent.split('/').map(Number);
+            if (current >= capacity) {
+                showNotification('This event is already full', 'danger');
+                return;
+            }
+        }
+        
+        currentEventId = this.dataset.eventId;
+        document.getElementById('modalEventId').value = currentEventId;
+        modal.show();
+    }
 });
 
 

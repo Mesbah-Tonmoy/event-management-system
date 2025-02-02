@@ -1,5 +1,5 @@
 <?php
-require_once '../connect'; // Adjust the path to your DB connection
+require_once '../connect.php'; // Adjust the path to your DB connection
 
 class EventCategorySeeder {
     public static function run($pdo) {

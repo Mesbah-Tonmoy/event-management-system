@@ -134,9 +134,16 @@ body {
 .event-content {
     padding: 15px;
 }
+.event-content .badge {
+    height: fit-content !important;
+}
 
 .event-title {
     font-size: 1.2em;
+}
+.event-title a:hover {
+    color: #007BFF !important;
+    transition: .3s ease;
 }
 
 .event-date {

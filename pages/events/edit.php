@@ -95,12 +95,12 @@ require_once '../../includes/header.php';
                             class="img-thumbnail d-block mb-2" 
                             style="max-width: 200px">
                 <?php endif; ?>
-                <input type="file" class="form-control" id="image" name="fileToUpload">
+                <input type="file" class="form-control" id="image" name="fileToUpload" accept="image/*">
             </div>
             
             <!-- Include form fields from create.php with existing values -->
             <div class="mb-3">
-                <label for="title" class="form-label">Title</label>
+                <label for="title" class="form-label">Title <span class="text-danger">*</span></label>
                 <input type="text" class="form-control" id="title" name="title" 
                         value="<?= htmlspecialchars($event['title']) ?>" required>
             </div>
@@ -111,7 +111,7 @@ require_once '../../includes/header.php';
             </div>
             
             <div class="mb-3">
-                <label for="category" class="form-label">Category</label>
+                <label for="category" class="form-label">Category <span class="text-danger">*</span></label>
                 <select class="form-select" id="category" name="category" required>
                     <?php foreach ($categories as $cat): ?>
                         <option value="<?= $cat['id'] ?>" 
@@ -123,19 +123,19 @@ require_once '../../includes/header.php';
             </div>
 
             <div class="mb-3">
-                <label for="date" class="form-label">Date</label>
+                <label for="date" class="form-label">Date <span class="text-danger">*</span></label>
                 <input type="date" class="form-control" id="date" name="date" value="<?= htmlspecialchars($event['date']) ?>" required>
             </div>
             <div class="mb-3">
-                <label for="time" class="form-label">Time</label>
+                <label for="time" class="form-label">Time <span class="text-danger">*</span></label>
                 <input type="time" class="form-control" id="time" name="time" value="<?= htmlspecialchars($event['time']) ?>" required>
             </div>
             <div class="mb-3">
-                <label for="location" class="form-label">Location</label>
+                <label for="location" class="form-label">Location <span class="text-danger">*</span></label>
                 <input type="text" class="form-control" id="location" name="location" value="<?= htmlspecialchars($event['location']) ?>" required>
             </div>
             <div class="mb-3">
-                <label for="capacity" class="form-label">Capacity</label>
+                <label for="capacity" class="form-label">Capacity <span class="text-danger">*</span></label>
                 <input type="number" class="form-control" id="capacity" name="capacity" value="<?= htmlspecialchars($event['capacity']) ?>" required min="1">
             </div>
             

@@ -49,7 +49,7 @@ $pageTitle = $event['title'] . " - Event Details";
 require_once '../../includes/header.php';
 ?>
 
-<div class="row">
+<div class="row justify-content-center">
     <div class="col-md-8">
         <div class="card">
             <?php if ($event['img']): ?>
