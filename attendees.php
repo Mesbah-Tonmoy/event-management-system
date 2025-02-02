@@ -61,7 +61,7 @@ if (isset($_GET['export'])) {
 }
 
 $pageTitle = "Attendees List - ";
-include 'includes/header.php';
+require_once 'includes/header.php';
 ?>
 
 <div class="d-md-flex justify-content-between align-items-center mb-4">
@@ -109,4 +109,4 @@ include 'includes/header.php';
     <i class="bi bi-arrow-left"></i> Back to Dashboard
 </a>
 
-<?php include 'includes/footer.php'; ?>
+<?php require_once 'includes/footer.php'; ?>

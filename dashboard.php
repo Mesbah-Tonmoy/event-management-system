@@ -98,7 +98,7 @@ if ($per_page > 0) {
 
 <?php 
 $pageTitle = "Dashboard - Event Management System";
-include 'includes/header.php'; 
+require_once 'includes/header.php'; 
 ?>
 
 <div class="pb-1 mb-3 border-bottom d-flex justify-content-between align-items-center">
@@ -238,4 +238,4 @@ include 'includes/header.php';
     </div>
 </nav>
 
-<?php include 'includes/footer.php'; ?>
+<?php require_once 'includes/footer.php'; ?>

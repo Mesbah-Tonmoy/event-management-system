@@ -40,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <?php 
 $pageTitle = "Login - Event Management System";
-include 'includes/header.php'; 
+require_once 'includes/header.php'; 
 ?>
 
 <div class="row justify-content-center">
@@ -72,4 +72,4 @@ include 'includes/header.php';
     </div>
 </div>
 
-<?php include 'includes/footer.php'; ?>
+<?php require_once 'includes/footer.php'; ?>

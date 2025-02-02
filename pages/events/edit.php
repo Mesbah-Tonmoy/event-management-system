@@ -78,7 +78,7 @@ $stmt->execute();
 $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 $pageTitle = "Edit Event - " . htmlspecialchars($event['title']);
-include '../../includes/header.php';
+require_once '../../includes/header.php';
 ?>
 
 <div class="row">
@@ -147,4 +147,4 @@ include '../../includes/header.php';
     </div>
 </div>
 
-<?php include '../../includes/footer.php'; ?>
+<?php require_once '../../includes/footer.php'; ?>

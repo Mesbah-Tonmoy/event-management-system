@@ -44,7 +44,7 @@ function highlightSearchTerm($text, $searchTerm) {
 }
 
 $pageTitle = "Search Results: " . htmlspecialchars($searchQuery);
-include 'includes/header.php';
+require_once 'includes/header.php';
 ?>
 
 <h2 class="mb-4">Search Results for "<?= htmlspecialchars($searchQuery) ?>"</h2>
@@ -136,4 +136,4 @@ include 'includes/header.php';
     </div>
 </div>
 
-<?php include 'includes/footer.php'; ?>
+<?php require_once 'includes/footer.php'; ?>

@@ -107,7 +107,7 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // Update registration count and buttons
             document.querySelectorAll(`[data-event-id="${currentEventId}"]`).forEach(btn => {
-                btn.classList.remove('btn-secondary');
+                btn.classList.remove('btn-info');
                 btn.classList.add('btn-success', 'disabled');
                 btn.innerHTML = '✓ Registered';
             });

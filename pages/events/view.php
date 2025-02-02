@@ -46,7 +46,7 @@ if (is_logged_in()) {
 }
 
 $pageTitle = $event['title'] . " - Event Details";
-include '../../includes/header.php';
+require_once '../../includes/header.php';
 ?>
 
 <div class="row">
@@ -92,7 +92,7 @@ include '../../includes/header.php';
                                 ✓ Registered
                             </button>
                         <?php elseif ($registered < $event['capacity']): ?>
-                            <a href="#" class="btn btn-success w-100 register-btn" data-event-id="<?= $event['id'] ?>">
+                            <a href="#" class="btn btn-info w-100 register-btn" data-event-id="<?= $event['id'] ?>">
                                 Register Now
                             </a>
                         <?php else: ?>
@@ -105,4 +105,5 @@ include '../../includes/header.php';
     </div>
 </div>
 
-<?php include '../../includes/footer.php'; ?>
+<?php require_once '../../includes/modal.php'; ?>
+<?php require_once '../../includes/footer.php'; ?>
