@@ -44,7 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         UPDATE events SET
         title = ?,
         description = ?,
-        img = ?,
+        img = CASE WHEN ? != '' THEN ? ELSE img END,
         date = ?,
         time = ?,
         location = ?,
@@ -52,11 +52,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         category = ?
         WHERE id = ?
     ");
-    
+
+    $newImage = !empty($_FILES['fileToUpload']['name']) ? basename($_FILES["fileToUpload"]["name"]) : '';
+
     if ($stmt->execute([
         $title,
         $description,
-        basename($_FILES["fileToUpload"]["name"]),
+        $newImage,  // For the comparison in CASE
+        $newImage,  // For the new value if comparison is true
         $date,
         $time,
         $location,
