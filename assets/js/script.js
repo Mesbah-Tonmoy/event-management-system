@@ -89,7 +89,7 @@ document.addEventListener('DOMContentLoaded', function() {
         submitBtn.disabled = true;
         
         try {
-            const response = await fetch('/evs-home/includes/attend.php', {
+            const response = await fetch('/evs/includes/attend.php', {
                 method: 'POST',
                 body: formData
             });
