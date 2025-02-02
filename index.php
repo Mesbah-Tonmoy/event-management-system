@@ -1,6 +1,11 @@
 <?php
     require_once 'includes/connect.php';
     require_once 'includes/auth.php';
+    
+    $pageTitle = "Event Management System";
+    require_once 'includes/header.php';
+    
+    display_flash_messages();
 
     // For closest event query
     $stmt_closest = $pdo->query("
@@ -45,10 +50,7 @@
         ". ($closest_event ? " AND e.id != ".$closest_event['id'] : "")
     );
     $total_events = $stmt_count->fetch(PDO::FETCH_ASSOC)['total'];
-    
-    $pageTitle = "Event Management System";
-    require_once 'includes/header.php';
-    
+
     if ($closest_event): ?>
     <section class="hero-event py-sm-5" style="background-image: url('uploads/<?= htmlspecialchars($closest_event['img']) ?>');">
         <div class="container text-center bg-glass">

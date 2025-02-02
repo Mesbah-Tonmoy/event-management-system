@@ -5,14 +5,16 @@ The **Event Management System** is a web-based application that allows users to 
 
 ## Features
 ### Core Functionalities
+- **Home Page**: Showcase the closest upcoming event with a countdown and all the upcoming events in a grid view.
 - **User Authentication**: Secure login and registration with password hashing.
-- **Event Management**: Create, update, view, and delete events.
-- **Attendee Registration**: Allow users to register for events while enforcing capacity limits.
+- **Event Management**: Authenticated users can create, update, view, and delete events.
 - **Event Dashboard**: Paginated, sortable, and filterable event display.
+- **Attendee Registration**: Allow users to register for events while enforcing capacity limits.
 - **Event Reports**: Export event attendee lists in CSV format.
+- **Search Functionality**: Authenticated users can search for events by title & location, and attendees by name & email.
 
-### Bonus Features
-- **Search Functionality**: Users can search for events and attendees.
+### Other Features
+- **Load More Button**: Loads more events when clicked.
 - **AJAX-based Registration**: Enhances user experience by avoiding full-page reloads.
 - **API Endpoint**: Provides JSON responses for fetching event details. 
                     (API path: `event-management-system/includes/api/event-details.php`)
@@ -46,28 +48,30 @@ Ensure you have the following installed:
      ?>
      ```
 
-### 3. Running the Seeder on an Empty Database
+### 3. Run the Application
+1. Go to your server's root directory (`htdocs` or equivalent for Apache).
+2. Create a folder named `evs` and place the project files in it.
+3. Start your local server (`Apache + MySQL`).
+4. Access the project in a browser:
+   ```
+   http://localhost/evs/
+   ```
+
+### 4. Running the Seeder on an Empty Database
 If you have an empty database and need to populate it with initial data, follow these steps:
 1. Open your web browser.
 2. Navigate to the following URL:
    ```
-   http://localhost/event-management-system/includes/seeder/dbSeeder.php
+   http://localhost/evs/includes/seeder/dbSeeder.php
    ```
 3. This will execute the seeder script and populate the database with default users, events, and event categories.
 4. Once completed, check the database to verify the seeded data.
 
-### 4. Run the Application
-1. Place the project files in your server's root directory (`htdocs` or equivalent for Apache).
-2. Start your local server (`Apache + MySQL`).
-3. Access the project in a browser:
-   ```
-   http://localhost/event-management-system/
-   ```
-
 ## Usage Guide
 ### 1. Login/Register
+- If the seeder has been run, it has created an admin and user credentials. Otherwise you need to register as a regular user.
 - Navigate to the login page (`login.php`).
-- Use the default admin credentials:
+- Use the default credentials:
   ```
   #### Admin Credentials ####
   Username: admin@evs.com

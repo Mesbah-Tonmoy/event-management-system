@@ -3,7 +3,7 @@ function display_flash_messages() {
     if (isset($_SESSION['flash'])) {
         foreach ($_SESSION['flash'] as $type => $messages) {
             foreach ($messages as $message) {
-                echo '<div class="alert alert-'.$type.' alert-dismissible fade show auto-dismiss">';
+                echo '<div class="alert alert-'.$type.' alert-dismissible fade show auto-dismiss mb-0">';
                 echo htmlspecialchars($message);
                 echo '<button type="button" class="btn-close" data-bs-dismiss="alert"></button>';
                 echo '</div>';

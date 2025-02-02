@@ -1,4 +1,5 @@
 <?php
+require_once '../functions.php';
 $seederFiles = [
     'UserSeeder.php',
     'EventCategorySeeder.php',
@@ -14,5 +15,7 @@ foreach ($seederFiles as $file) {
     }
 }
 
-echo "<br>✅ All seeders have been executed successfully!";
+add_flash_message('success', 'Seeders executed successfully!');
+header('Location: ../../index.php');
+exit;
 ?>

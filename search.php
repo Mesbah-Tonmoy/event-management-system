@@ -75,12 +75,18 @@ require_once 'includes/header.php';
                 <div class="col-md-6 col-xl-4 mb-4">
                     <div class="card h-100">
                         <?php if ($event['img']): ?>
-                        <img src="uploads/<?= htmlspecialchars($event['img']) ?>" 
-                                class="card-img-top" 
+                        <a href="pages/events/view.php?id=<?= $event['id'] ?>">
+                            <img src="uploads/<?= htmlspecialchars($event['img']) ?>" 
+                                class="event-image" 
                                 alt="<?= htmlspecialchars($event['title']) ?>">
+                        </a>
                         <?php endif; ?>
                         <div class="card-body">
-                            <h5 class="card-title"><?= highlightSearchTerm($event['title'], $searchQuery) ?></h5>
+                            <h5 class="card-title">
+                                <a href="pages/events/view.php?id=<?= $event['id'] ?>" class="text-decoration-none text-body">
+                                    <?= highlightSearchTerm($event['title'], $searchQuery) ?>
+                                </a>
+                            </h5>
                             <p class="card-text">
                                 <i class="bi bi-geo-alt"></i> <?= highlightSearchTerm($event['location'], $searchQuery) ?>
                             </p>
