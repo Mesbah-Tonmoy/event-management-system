@@ -102,8 +102,7 @@ function formatEvent($event) {
         'organizer' => $event['organizer'],
         'image_url' => $event['img'] ? 'uploads/' . $event['img'] : null,
         'links' => [
-            'view' => "/events/view.php?id={$event['id']}",
-            'api' => "/api.php?id={$event['id']}"
+            'view' => "/pages/events/view.php?id={$event['id']}"
         ]
     ];
 }
